@@ -5,11 +5,16 @@ terraform {
       version = "~> 3.0"
     }
   }
+  backend "s3" {
+    bucket = "devday-2"
+    key    = "state/terraform.tfstate"
+    region = "us-east-1"
+  }
 }
 
 # Configure the AWS Provider
 provider "aws" {
-  region     = var.region
-  access_key = var.aws_access_key_id
-  secret_key = var.aws_secret_access_key
+  region = var.region
 }
+
+
